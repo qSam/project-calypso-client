@@ -10,6 +10,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to Project Calypso</h2>
         </div>
+        {this.props.children}
       </div>
     );
   }
