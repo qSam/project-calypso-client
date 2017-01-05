@@ -5,6 +5,7 @@ import './index.css';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
+import reduxThunk from 'redux-thunk';
 
 //Import Components
 import reducers from './reducers';
@@ -14,7 +15,7 @@ import Welcome from './components/welcome';
 import Home from './components/home';
 
 //Create Redux Store
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
 
 ReactDOM.render(
