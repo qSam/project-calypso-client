@@ -11,6 +11,7 @@ import reducers from './reducers';
 import Signup from './components/auth/signup';
 import Signin from './components/auth/signin';
 import Welcome from './components/welcome';
+import Home from './components/home';
 
 //Create Redux Store
 const createStoreWithMiddleware = applyMiddleware()(createStore);
@@ -21,6 +22,7 @@ ReactDOM.render(
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={Welcome} />
+      <Route path='home' component={Home} />
       <Route path='signup' component={Signup} />
       <Route path='signin' component={Signin} />
     </Route>
