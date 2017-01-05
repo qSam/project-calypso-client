@@ -11,3 +11,11 @@ export function signupUser({user, password}){
   };
 
 }
+
+export function signinUser({user,password}){
+
+  return function(dispatch) {
+    console.log('Sign In User is ', {user});
+    console.log('Sign In Password is ', {password});
+  }
+}
