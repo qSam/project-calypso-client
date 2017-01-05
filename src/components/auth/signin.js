@@ -15,12 +15,12 @@ class Signin extends Component {
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
 
       <fieldset className="form-group">
-        <label>User Name:</label>
+        <label>User Name</label>
         <input className="form-control" {...user} />
       </fieldset>
 
       <fieldset className="form-group">
-        <label>Password:</label>
+        <label>Password</label>
         <input className="form-control" {...password} type="password" />
       </fieldset>
 
