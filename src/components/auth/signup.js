@@ -1,35 +1,37 @@
 import React, {Component} from 'react';
-import {reduxForm} from 'redux-form';
+import {Field, reduxForm} from 'redux-form';
 import * as actions from '../../actions';
+import {connect} from 'react-redux';
 
 class Signup extends Component {
 
-  handleFormSubmit(formProps){
+  handleFormSubmit(values){
     //Call Signup Action Creator
-    //this.props.signupUser(formProps);
-    console.log(this.props);
+    console.log("Form values are ", values);
+    this.props.signupUser(values);
   }
 
   render() {
-    const {handleSubmit, fields:{user, password, passwordConfirm}} = this.props;
+    const {handleSubmit} = this.props;
 
     return(
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
 
-      <fieldset className="form-group">
-        <label>User Name</label>
-        <input className="form-control" {...user} />
+      <fieldset>
+          <label htmlFor="user">User</label>
+          <Field name="user" className="form-control" component="input" type="text"/>
       </fieldset>
 
-      <fieldset className="form-group">
-        <label>Password</label>
-        <input className="form-control" {...password} type="password" />
+      <fieldset>
+                <label htmlFor="password">Password</label>
+                <Field name="password" className="form-control" component="input" type="password"/>
       </fieldset>
 
-      <fieldset className="form-group">
-        <label>Confirm Password</label>
-        <input className="form-control" {...passwordConfirm} type="password" />
+      <fieldset>
+                <label htmlFor="passwordConfirm">Confim Password</label>
+                <Field name="passwordConfirm" className="form-control" component="input" type="password"/>
       </fieldset>
+
 
 
         <button action="submit" className="btn btn-primary">Sign Up!</button>
@@ -49,8 +51,9 @@ function mapStateToProps(state) {
   return {};
 }
 
-export default reduxForm({
-  form: 'signup',
-  fields: ['user', 'password', 'passwordConfirm' ],
-  validate:validate
-}, mapStateToProps, actions)(Signup);
+Signup = reduxForm({
+    form: 'signup',
+    validate:validate
+})(Signup);
+
+export default Signup = connect(mapStateToProps, actions)(Signup);
