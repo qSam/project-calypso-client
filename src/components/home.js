@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import ListAll from './profile/listAll';
 
 class Home extends Component {
 
@@ -17,10 +17,12 @@ class Home extends Component {
   render(){
     return (
       <div className="text-left">
-        This is the Home Component
+        <br />
         <form onSubmit={this.handleSubmit}>
-          <input className="btn btn-primary" type="submit" value="Create new savings pool" />
+          <input className="btn btn-success" type="submit" value="Create new savings pool" />
         </form>
+
+        <ListAll />
       </div>
     );
   }
