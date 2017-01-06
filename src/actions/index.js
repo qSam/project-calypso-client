@@ -47,7 +47,11 @@ export function signinUser({username,password}){
         browserHistory.push('/home');
       })
       .catch( response => {
-        console.log("Error :", response.data.error);
+        console.log("Error :", response);
+        dispatch({
+          type:AUTH_ERROR,
+          payload: 'Unable to login'
+        })
       })
   }
 }
