@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import * as actions from '../../actions';
 import {connect} from 'react-redux';
+import {browserHistory} from 'react-router';
 
 
 class NumberOfMembers extends Component {
@@ -14,6 +15,7 @@ class NumberOfMembers extends Component {
   handleSubmit(event) {
 
     this.props.addPoolUsers(event.target.numOfMembers.value);
+    browserHistory.push('/membercontacts');
     event.preventDefault();
   }
 

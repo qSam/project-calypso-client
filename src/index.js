@@ -14,6 +14,7 @@ import Signin from './components/auth/signin';
 import Welcome from './components/welcome';
 import Home from './components/home';
 import NumberOfMembers from './components/newPool/numberOfMembers';
+import MemberContacts from './components/newPool/memberContacts';
 
 //Create Redux Store
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
@@ -28,6 +29,7 @@ ReactDOM.render(
       <Route path='signup' component={Signup} />
       <Route path='signin' component={Signin} />
       <Route path='listmembers' component={NumberOfMembers} />
+      <Route path='membercontacts' component={MemberContacts} />
     </Route>
   </Router>
   </Provider>,
