@@ -18,8 +18,8 @@ class Signup extends Component {
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
 
       <fieldset>
-          <label htmlFor="user">User</label>
-          <Field name="user" className="form-control" component="input" type="text"/>
+          <label htmlFor="username">User</label>
+          <Field name="username" className="form-control" component="input" type="text"/>
       </fieldset>
 
       <fieldset>
