@@ -1,10 +1,8 @@
 import axios from 'axios';
 import {browserHistory} from 'react-router';
 
-export const AUTH_USER = 'auth_user';
-export const UNAUTH_USER = 'unauth_user';
 export const AUTH_ERROR = 'auth_error';
-
+export const ADD_POOL_USERS = 'add_pool_users';
 
 const ROOT_URL = 'http://localhost:3080';
 
@@ -53,5 +51,15 @@ export function signinUser({username,password}){
           payload: 'Unable to login'
         })
       })
+  }
+}
+
+export function addPoolUsers(numOfUsers){
+
+  return function(dispatch) {
+    dispatch({
+      type:ADD_POOL_USERS,
+      payload: numOfUsers
+    })
   }
 }

@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import * as actions from '../../actions';
+import {connect} from 'react-redux';
 
 
 class NumberOfMembers extends Component {
@@ -10,7 +12,8 @@ class NumberOfMembers extends Component {
   }
 
   handleSubmit(event) {
-    console.log(event.target.numOfMembers.value);
+
+    this.props.addPoolUsers(event.target.numOfMembers.value);
     event.preventDefault();
   }
 
@@ -31,6 +34,7 @@ class NumberOfMembers extends Component {
             <option value="9">9</option>
             <option value="10">10</option>
           </select><br /><br />
+            Number of Members : {this.props.totalMembers}<br />
             <input className="btn btn-primary" type="submit" value="Next" />
          </form>
         </div>
@@ -39,4 +43,8 @@ class NumberOfMembers extends Component {
 
 }
 
-export default NumberOfMembers;
+function mapStateToProps(state) {
+  return {totalMembers : state.pool.totalMembers};
+}
+
+export default NumberOfMembers = connect(mapStateToProps, actions)(NumberOfMembers);
