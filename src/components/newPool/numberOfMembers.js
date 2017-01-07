@@ -21,7 +21,7 @@ class NumberOfMembers extends Component {
 
   render(){
       return(
-        <div>
+        <div className="text-left">
           <form onSubmit={this.handleSubmit}>
           Please enter number of members<br />
           <select name="numOfMembers">

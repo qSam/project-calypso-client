@@ -2,12 +2,15 @@ import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import * as actions from '../../actions';
 import {connect} from 'react-redux';
+import {browserHistory} from 'react-router';
 
 
 class SavingPool extends Component {
 
   handleFormSubmit(values) {
     //Call an action creator here
+    this.props.addPoolDetails(values);
+    browserHistory.push('/reviewnewpool');
   }
 
   render() {
@@ -29,13 +32,13 @@ class SavingPool extends Component {
 
         <fieldset className="form-group">
           <label htmlFor="policyLength">Policy Length</label>
-          <select name="policyLength" className="form-control">
+          <Field name="policyLength" className="form-control" component="select">
             <option value="1">1 Month</option>
             <option value="3">3 Months</option>
             <option value="6">6 Months</option>
             <option value="9">9 Months</option>
             <option value="12">12 Months</option>
-          </select>
+          </Field>
         </fieldset>
 
         <button action="submit" className="btn btn-primary">Next</button>

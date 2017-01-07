@@ -56,9 +56,9 @@ class MemberContacts extends Component {
   }
 
   render(){
-    
+
     return (
-      <div>
+      <div className="text-left">
         <form onSubmit={this.handleSubmit}>
         Please enter contacts for {this.props.totalMembers} pool members
         {this.renderInputs()}

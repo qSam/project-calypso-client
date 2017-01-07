@@ -4,6 +4,7 @@ import {browserHistory} from 'react-router';
 export const AUTH_ERROR = 'auth_error';
 export const ADD_POOL_USERS = 'add_pool_users';
 export const ADD_POOL_CONTACTS = 'add_pool_contacts';
+export const ADD_POOL_DETAILS = 'add_pool_details';
 
 const ROOT_URL = 'http://localhost:3080';
 
@@ -71,6 +72,16 @@ export function addPoolContacts(contacts){
     dispatch({
       type:ADD_POOL_CONTACTS,
       payload: contacts
+    })
+  }
+}
+
+export function addPoolDetails(values){
+
+  return function(dispatch) {
+    dispatch({
+        type: ADD_POOL_DETAILS,
+        payload:values
     })
   }
 }
