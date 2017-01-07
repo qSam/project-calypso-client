@@ -13,7 +13,13 @@ class MemberContacts extends Component {
   }
 
   handleSubmit(event){
-    console.log(event.target.input_0.value);
+    let contactsObject = [];
+    _.times(this.props.totalMembers, (i) => {
+       let keyString="";
+       keyString="input_".concat(i);
+       contactsObject.push({"Email":event.target[keyString].value});
+    })
+    console.log(contactsObject);
     event.preventDefault();
   }
 
@@ -23,7 +29,6 @@ class MemberContacts extends Component {
         { _.times(this.props.totalMembers, (i) => {
            let keyString="";
            keyString="input_".concat(i);
-           console.log(keyString);
            return (
              <div className="input-group" key={keyString} >
              <input type="text" className="form-control" name={keyString} placeholder="Email" />
