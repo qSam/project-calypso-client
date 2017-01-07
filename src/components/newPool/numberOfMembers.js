@@ -36,7 +36,6 @@ class NumberOfMembers extends Component {
             <option value="9">9</option>
             <option value="10">10</option>
           </select><br /><br />
-            Number of Members : {this.props.totalMembers}<br />
             <input className="btn btn-primary" type="submit" value="Next" />
          </form>
         </div>

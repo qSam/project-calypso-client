@@ -19,7 +19,8 @@ class MemberContacts extends Component {
        keyString="input_".concat(i);
        contactsObject.push({"Email":event.target[keyString].value});
     })
-    console.log(contactsObject);
+    this.props.addPoolContacts(contactsObject);
+    browserHistory.push('/savingpool');
     event.preventDefault();
   }
 
@@ -39,7 +40,23 @@ class MemberContacts extends Component {
       );
   }
 
+  renderMemberContacts(){
+    return(
+      <div>
+        {this.props.memberContacts.map( (contact) => {
+          return (
+            <div key={contact.Email}>
+                Member contact is {contact.Email}
+            </div>
+          );
+        }
+        )}
+      </div>
+    );
+  }
+
   render(){
+    
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -47,13 +64,17 @@ class MemberContacts extends Component {
         {this.renderInputs()}
         <input className="btn btn-primary" type="submit" value="Next" />
         </form>
+        {this.renderMemberContacts()}
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return {totalMembers: state.pool.totalMembers};
+  return {
+          totalMembers: state.pool.totalMembers,
+          memberContacts: state.pool.memberContacts
+          };
 }
 
 export default MemberContacts = connect(mapStateToProps, actions)(MemberContacts);
