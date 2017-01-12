@@ -20,7 +20,7 @@ class MemberContacts extends Component {
        contactsObject.push({"Email":event.target[keyString].value});
     })
     this.props.addPoolContacts(contactsObject);
-    browserHistory.push('/savingpool');
+    browserHistory.push('/reviewnewpool');
     event.preventDefault();
   }
 

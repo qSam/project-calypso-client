@@ -10,7 +10,7 @@ class SavingPool extends Component {
   handleFormSubmit(values) {
     //Call an action creator here
     this.props.addPoolDetails(values);
-    browserHistory.push('/reviewnewpool');
+    browserHistory.push('/listmembers');
   }
 
   render() {

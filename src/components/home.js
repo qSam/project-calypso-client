@@ -11,7 +11,7 @@ class Home extends Component {
   }
 
   handleSubmit(event) {
-    browserHistory.push('/listmembers');
+    browserHistory.push('/savingpool');
     event.preventDefault();
   }
 
