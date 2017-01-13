@@ -1,8 +1,17 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {reduxForm} from 'redux-form';
+import * as actions from '../../actions';
+import {browserHistory} from 'react-router';
 
 
 class ReviewNewPool extends Component {
+
+  handleFormSubmit(values) {
+    //Call Submit Pool action creator
+    browserHistory.push('/home');
+    event.preventDefault();
+  }
 
 
   renderTotalMembers() {
@@ -40,14 +49,30 @@ class ReviewNewPool extends Component {
 
   render(){
 
+    const {handleSubmit} = this.props;
+
     return(
+
       <div className="panel panel-default text-left">
+      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))} >
+
         {this.renderPoolDetails()}
         {this.renderTotalMembers()}
         {this.renderMemberContacts()}
+
+
+      <input className="btn btn-primary" type="submit" value="Submit" />
+
+      </form>
       </div>
     );
   }
+}
+
+function validate(formProps) {
+  const errors = {};
+
+  return errors;
 }
 
 function mapStateToProps(state) {
@@ -58,5 +83,10 @@ function mapStateToProps(state) {
   };
 }
 
+ReviewNewPool = reduxForm({
+      form: 'reviewpool',
+      validate:validate
+})(ReviewNewPool);
 
-export default ReviewNewPool = connect (mapStateToProps, null)(ReviewNewPool);
+
+export default ReviewNewPool = connect (mapStateToProps, actions)(ReviewNewPool);
