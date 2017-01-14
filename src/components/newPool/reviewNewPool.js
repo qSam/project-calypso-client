@@ -17,6 +17,7 @@ class ReviewNewPool extends Component {
     const submitPolicyLength = this.props.poolDetails.policyLength;
 
     let newPoolObject = {
+      "username": "cr9",
       "totalMembers": submitTotalMembers,
       "policyName": submitPolicyName,
       "totalAmount": submitTotalAmount,
@@ -70,14 +71,13 @@ class ReviewNewPool extends Component {
 
     return(
 
-      <div className="panel panel-default text-left">
+      <div className="text-left">
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))} >
-
-        {this.renderPoolDetails()}
-        {this.renderTotalMembers()}
-        {this.renderMemberContacts()}
-
-
+        <div className="panel panel-default ">
+          {this.renderPoolDetails()}
+          {this.renderTotalMembers()}
+          {this.renderMemberContacts()}
+        </div>
       <input className="btn btn-primary" type="submit" value="Submit" />
 
       </form>
