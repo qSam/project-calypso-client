@@ -9,6 +9,23 @@ class ReviewNewPool extends Component {
 
   handleFormSubmit(values) {
     //Call Submit Pool action creator
+
+    //Create object with appropriate values
+    const submitTotalMembers = this.props.totalMembers;
+    const submitPolicyName = this.props.poolDetails.policyName;
+    const submitTotalAmount = this.props.poolDetails.totalAmount;
+    const submitPolicyLength = this.props.poolDetails.policyLength;
+
+    let newPoolObject = {
+      "totalMembers": submitTotalMembers,
+      "policyName": submitPolicyName,
+      "totalAmount": submitTotalAmount,
+      "policyLength": submitPolicyLength
+    };
+
+    console.log("Obect to submit is : ",newPoolObject);
+
+
     browserHistory.push('/home');
     event.preventDefault();
   }
