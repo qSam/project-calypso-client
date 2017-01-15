@@ -5,6 +5,7 @@ export const AUTH_ERROR = 'auth_error';
 export const ADD_POOL_USERS = 'add_pool_users';
 export const ADD_POOL_CONTACTS = 'add_pool_contacts';
 export const ADD_POOL_DETAILS = 'add_pool_details';
+export const FETCH_USER_POOLS = 'fetch_user_pools';
 
 const ROOT_URL = 'http://localhost:3080';
 
@@ -69,7 +70,7 @@ export function submitNewPool(values) {
       console.log("Policy successfully created");
     })
     .catch (response => {
-
+      console.log("Error: ",response);
     })
   }
 }
@@ -101,5 +102,21 @@ export function addPoolDetails(values){
         type: ADD_POOL_DETAILS,
         payload:values
     })
+  }
+}
+
+export function getAllUserPools(ID) {
+  return function(dispatch){
+    axios.get(`${ROOT_URL}/getAllPolicies/${ID}`,{})
+      .then(response => {
+        console.log("Fetching pools ",response.data);
+        dispatch({
+          type: FETCH_USER_POOLS,
+          payload: response.data
+        });
+      })
+      .catch(response => {
+        console.log("Error: ", response);
+      })
   }
 }
