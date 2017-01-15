@@ -25,8 +25,7 @@ class ReviewNewPool extends Component {
     };
 
     console.log("Obect to submit is : ",newPoolObject);
-
-
+    this.props.submitNewPool(newPoolObject);
     browserHistory.push('/home');
     event.preventDefault();
   }

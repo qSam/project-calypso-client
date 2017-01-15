@@ -56,6 +56,24 @@ export function signinUser({username,password}){
   }
 }
 
+export function submitNewPool(values) {
+  return function(dispatch){
+    const ID = values.username;
+    console.log("Values for submission are ", values);
+    axios.post(`${ROOT_URL}/createPolicy/${ID}`,{
+        "policyName": values.policyName,
+        "totalAmount":  values.totalAmount,
+        "policyLength": values.policyLength
+    })
+    .then (response => {
+      console.log("Policy successfully created");
+    })
+    .catch (response => {
+
+    })
+  }
+}
+
 export function addPoolUsers(numOfUsers){
 
   return function(dispatch) {
