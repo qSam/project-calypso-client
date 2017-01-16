@@ -44,8 +44,11 @@ export function signinUser({username,password}){
         //Dispatch Auth action to reducers
         dispatch({
           type: SIGNIN_USER,
-          payload: true
+          payload: {username}.username
         });
+
+        //Redirect to home
+        browserHistory.push('/home');
 
       })
       .catch( response => {

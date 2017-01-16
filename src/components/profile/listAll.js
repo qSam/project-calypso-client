@@ -4,11 +4,13 @@ import * as actions from '../../actions';
 
 class ListAll extends Component {
 
+
   //First Time Render
   componentWillMount() {
-    console.log("Signed In value is ", this.props.userSignedIn);
     console.log("User Id is ", this.props.userID);
-    this.props.getAllUserPools("cr9");
+    if(this.props.userSignedIn) {
+    this.props.getAllUserPools(this.props.userID);
+  }
   }
 
   renderUserPools(){
@@ -29,12 +31,21 @@ class ListAll extends Component {
   }
 
   render(){
-    return (
+
+    if (this.props.userSignedIn) {
+      return (
       <div>
         Your current saving pools are:
         {this.renderUserPools()}
       </div>
     );
+  } else {
+    return (
+      <div>
+        Please Sign In first!
+      </div>
+    );
+  }
   }
 
 }
