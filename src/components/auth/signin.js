@@ -2,12 +2,15 @@ import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import * as actions from '../../actions';
 import {connect} from 'react-redux';
+import {browserHistory} from 'react-router';
 
 class Signin extends Component {
 
   handleFormSubmit(values) {
     //Call Signin Action Creator
     this.props.signinUser(values);
+    //Redirect to home
+    browserHistory.push('/home');
   }
 
   renderAlert() {

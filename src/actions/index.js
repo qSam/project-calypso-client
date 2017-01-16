@@ -6,6 +6,7 @@ export const ADD_POOL_USERS = 'add_pool_users';
 export const ADD_POOL_CONTACTS = 'add_pool_contacts';
 export const ADD_POOL_DETAILS = 'add_pool_details';
 export const FETCH_USER_POOLS = 'fetch_user_pools';
+export const SIGNIN_USER = 'signin_user';
 
 const ROOT_URL = 'http://localhost:3080';
 
@@ -37,15 +38,15 @@ export function signupUser({username, password}){
 export function signinUser({username,password}){
 
   return function(dispatch) {
-    console.log('Sign In User is ', {username});
-    console.log('Sign In Password is ', {password});
 
     axios.post(`${ROOT_URL}/signin`, {username,password})
       .then ( response => {
         //Dispatch Auth action to reducers
+        dispatch({
+          type: SIGNIN_USER,
+          payload: true
+        });
 
-        //Redirect to home
-        browserHistory.push('/home');
       })
       .catch( response => {
         console.log("Error :", response);

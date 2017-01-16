@@ -6,6 +6,8 @@ class ListAll extends Component {
 
   //First Time Render
   componentWillMount() {
+    console.log("Signed In value is ", this.props.userSignedIn);
+    console.log("User Id is ", this.props.userID);
     this.props.getAllUserPools("cr9");
   }
 
@@ -39,7 +41,9 @@ class ListAll extends Component {
 
 function mapStateToProps(state) {
   return {
-    userPools : state.user.userPools
+    userPools : state.user.userPools,
+    userSignedIn: state.user.userSignedIn,
+    userID: state.user.userID
   };
 }
 
