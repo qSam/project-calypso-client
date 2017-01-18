@@ -13,12 +13,14 @@ const ROOT_URL = 'http://localhost:3080';
 export function signupUser({username, password}){
 
   return function(dispatch) {
-    console.log('User is ', {username});
-    console.log('Password is', {password});
 
     axios.post(`${ROOT_URL}/signup`,{username,password})
       .then( response => {
         //Dispatch Auth action to reducer
+        dispatch({
+          type: SIGNIN_USER,
+          payload: {username}.username
+        });
 
         //Redirect to home
         browserHistory.push('/home');
@@ -72,6 +74,7 @@ export function submitNewPool(values) {
     })
     .then (response => {
       console.log("Policy successfully created");
+      browserHistory.push('/home');
     })
     .catch (response => {
       console.log("Error: ",response);

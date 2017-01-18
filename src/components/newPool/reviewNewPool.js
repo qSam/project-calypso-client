@@ -17,7 +17,7 @@ class ReviewNewPool extends Component {
     const submitPolicyLength = this.props.poolDetails.policyLength;
 
     let newPoolObject = {
-      "username": "cr9",
+      "username":  this.props.userID,
       "totalMembers": submitTotalMembers,
       "policyName": submitPolicyName,
       "totalAmount": submitTotalAmount,
@@ -95,7 +95,8 @@ function mapStateToProps(state) {
   return {
     totalMembers: state.pool.totalMembers,
     memberContacts: state.pool.memberContacts,
-    poolDetails: state.pool.newPoolDetails
+    poolDetails: state.pool.newPoolDetails,
+    userID: state.user.userID
   };
 }
 
