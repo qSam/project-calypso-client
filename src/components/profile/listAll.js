@@ -39,13 +39,7 @@ class ListAll extends Component {
         {this.renderUserPools()}
       </div>
     );
-  } else {
-    return (
-      <div>
-        Please Sign In first!
-      </div>
-    );
-  }
+    } 
   }
 
 }

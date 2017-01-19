@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {reduxForm} from 'redux-form';
 import * as actions from '../../actions';
-import {browserHistory} from 'react-router';
 
 
 class ReviewNewPool extends Component {
@@ -26,7 +25,6 @@ class ReviewNewPool extends Component {
 
     console.log("Obect to submit is : ",newPoolObject);
     this.props.submitNewPool(newPoolObject);
-    browserHistory.push('/home');
     event.preventDefault();
   }
 

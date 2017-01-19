@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {browserHistory} from 'react-router';
 import ListAll from './profile/listAll';
+import {connect} from 'react-redux';
 
 class Home extends Component {
 
@@ -16,16 +17,32 @@ class Home extends Component {
   }
 
   render(){
-    return (
-      <div className="text-left">
-        <form onSubmit={this.handleSubmit}>
-          <input className="btn btn-success" type="submit" value="Create new savings pool" />
-        </form>
 
-        <ListAll />
-      </div>
-    );
+    if(this.props.userSignedIn) {
+      return (
+        <div className="text-left">
+          <form onSubmit={this.handleSubmit}>
+            <input className="btn btn-success" type="submit" value="Create new savings pool" />
+          </form>
+
+          <ListAll />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          Please Sign In first!
+        </div>
+      );
+    }
+
   }
 }
 
-export default Home;
+function mapStateToProps(state) {
+  return {
+    userSignedIn: state.user.userSignedIn
+  };
+}
+
+export default Home = connect(mapStateToProps, null)(Home);
