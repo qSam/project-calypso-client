@@ -11,6 +11,7 @@ import reduxThunk from 'redux-thunk';
 import reducers from './reducers';
 import Signup from './components/auth/signup';
 import Signin from './components/auth/signin';
+import Signout from './components/auth/signout';
 import Home from './components/home';
 import NumberOfMembers from './components/newPool/numberOfMembers';
 import MemberContacts from './components/newPool/memberContacts';
@@ -29,6 +30,7 @@ ReactDOM.render(
       <Route path='home' component={Home} />
       <Route path='signup' component={Signup} />
       <Route path='signin' component={Signin} />
+      <Route path='signout' component={Signout} />
       <Route path='listmembers' component={NumberOfMembers} />
       <Route path='membercontacts' component={MemberContacts} />
       <Route path='savingpool' component={SavingPool} />

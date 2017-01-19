@@ -1,6 +1,7 @@
 import {
   FETCH_USER_POOLS,
-  SIGNIN_USER
+  SIGNIN_USER,
+  SIGNOUT_USER
 } from '../actions/index';
 
 const INITIAL_STATE = { userSignedIn: false, userID:'', userPools: [] };
@@ -9,8 +10,9 @@ export default function (state=INITIAL_STATE, action) {
 
   switch(action.type) {
     case SIGNIN_USER:
-      console.log("I am inside this reducer");
       return {...state, userSignedIn:true , userID: action.payload };
+    case SIGNOUT_USER:
+      return {...state, userSignedIn:false, userID:''}
     case FETCH_USER_POOLS:
       return {...state, userPools: action.payload};
     default:
