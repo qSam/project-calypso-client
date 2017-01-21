@@ -71,7 +71,7 @@ export function signoutUser() {
 export function submitNewPool(values) {
   return function(dispatch){
     const ID = values.username;
-    console.log("Values for submission are ", values);
+
     axios.post(`${ROOT_URL}/createPolicy/${ID}`,{
         "policyName": values.policyName,
         "totalAmount":  values.totalAmount,
@@ -121,7 +121,6 @@ export function getAllUserPools(ID) {
   return function(dispatch){
     axios.get(`${ROOT_URL}/getAllPolicies/${ID}`,{})
       .then(response => {
-        console.log("Fetching pools ",response.data);
         dispatch({
           type: FETCH_USER_POOLS,
           payload: response.data

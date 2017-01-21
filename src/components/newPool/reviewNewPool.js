@@ -23,7 +23,6 @@ class ReviewNewPool extends Component {
       "policyLength": submitPolicyLength
     };
 
-    console.log("Obect to submit is : ",newPoolObject);
     this.props.submitNewPool(newPoolObject);
     event.preventDefault();
   }

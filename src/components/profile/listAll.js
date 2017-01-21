@@ -7,7 +7,6 @@ class ListAll extends Component {
 
   //First Time Render
   componentWillMount() {
-    console.log("User Id is ", this.props.userID);
     if(this.props.userSignedIn) {
     this.props.getAllUserPools(this.props.userID);
   }
@@ -33,13 +32,22 @@ class ListAll extends Component {
   render(){
 
     if (this.props.userSignedIn) {
-      return (
-      <div>
-        Your current saving pools are:
-        {this.renderUserPools()}
-      </div>
-    );
-    } 
+      if(this.props.userPools.length > 0) {
+        return (
+        <div>
+          Your current saving pools are:
+          {this.renderUserPools()}
+        </div>
+      );
+    } else {
+      return(
+        <div>
+          You currently have not created any savings pools
+        </div>
+      );
+    }
+
+    }
   }
 
 }
