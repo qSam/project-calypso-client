@@ -2,7 +2,7 @@ import {
         ADD_POOL_USERS,
         ADD_POOL_CONTACTS,
         ADD_POOL_DETAILS
-} from '../actions/index';
+} from '../actions/types';
 
 const INITIAL_STATE = { totalMembers : 0,
                         memberContacts : [],

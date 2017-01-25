@@ -2,7 +2,7 @@ import {
   FETCH_USER_POOLS,
   SIGNIN_USER,
   SIGNOUT_USER
-} from '../actions/index';
+} from '../actions/types';
 
 const INITIAL_STATE = { userSignedIn: false, userID:'', userPools: [] };
 

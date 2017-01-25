@@ -1,6 +1,6 @@
 import {
   AUTH_ERROR
-} from '../actions/index';
+} from '../actions/types';
 
 const INITIAL_STATE = {};
 
