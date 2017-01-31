@@ -31,7 +31,7 @@ class Home extends Component {
     } else {
       return (
         <div>
-          Please Sign In first!
+          Please Sign In First!
         </div>
       );
     }
