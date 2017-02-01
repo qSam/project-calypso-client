@@ -24,6 +24,7 @@ class Home extends Component {
           <form onSubmit={this.handleSubmit}>
             <input className="btn btn-success" type="submit" value="Create new savings pool" />
           </form>
+          <hr />
 
           <ListAll />
         </div>
