@@ -10,7 +10,6 @@ class Signup extends Component {
 
   handleFormSubmit(values){
     //Call Signup Action Creator
-    console.log("Form values are ", values);
     this.props.signupUser(values);
   }
 

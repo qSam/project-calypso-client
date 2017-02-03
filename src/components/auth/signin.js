@@ -9,7 +9,6 @@ class Signin extends Component {
 
   handleFormSubmit(values) {
     //Call Signin Action Creator
-    console.log(values);
     this.props.signinUser(values);
 
   }
