@@ -3,6 +3,8 @@ import {Field, reduxForm} from 'redux-form';
 import * as actions from '../../actions';
 import {connect} from 'react-redux';
 
+
+
 class Signup extends Component {
 
   handleFormSubmit(values){
@@ -24,17 +26,32 @@ class Signup extends Component {
   render() {
     const {handleSubmit} = this.props;
 
+    //Validation
+    const required = value => value ? undefined : 'Required';
+
+    const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+      <fieldset>
+      <label>{label}</label>
+      <input {...input} placeholder={label} type={type} className="form-control"/><br />
+      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+      </fieldset>
+    );
+
+
     return(
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
 
       <fieldset>
-          <label htmlFor="username">User</label>
-          <Field name="username" className="form-control" component="input" type="text"/>
+          <Field name="username" className="form-control" component={renderField} type="text"
+          label="Username"
+          validate={required}   />
       </fieldset>
 
       <fieldset>
                 <label htmlFor="password">Password</label>
-                <Field name="password" className="form-control" component="input" type="password"/>
+                <Field name="password" className="form-control" component="input"/>
+
+
       </fieldset>
 
       <fieldset>
@@ -51,6 +68,10 @@ class Signup extends Component {
 
 function validate(formProps){
   const errors = {};
+
+  if(formProps.password !== formProps.passwordConfirm) {
+    errors.password = 'Password must match';
+  }
 
   return errors;
 }

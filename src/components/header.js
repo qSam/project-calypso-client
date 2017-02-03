@@ -23,7 +23,7 @@ export class Header extends Component {
 
   render(){
     return (
-      <nav className="navbar navbar-light">
+      <nav className="navbar navbar-inverse bg-primary">
         <ul className="nav navbar-nav">
           {this.renderLinks()}
         </ul>
