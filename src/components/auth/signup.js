@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import * as actions from '../../actions';
 import {connect} from 'react-redux';
+import '../../App.css';
 
 
 
@@ -26,14 +27,12 @@ class Signup extends Component {
   render() {
     const {handleSubmit} = this.props;
 
-    //Validation
-    const required = value => value ? undefined : 'Required';
 
-    const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
+    const renderField = ({ input, label, type, meta: { touched, error } }) => (
       <fieldset>
       <label>{label}</label>
-      <input {...input} placeholder={label} type={type} className="form-control"/><br />
-      {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+      <input {...input} placeholder={label} type={type} className="form-control"/>
+      {touched && (error && <span className="Error">{error}</span>)}
       </fieldset>
     );
 
@@ -41,23 +40,15 @@ class Signup extends Component {
     return(
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
 
-      <fieldset>
-          <Field name="username" className="form-control" component={renderField} type="text"
-          label="Username"
-          validate={required}   />
-      </fieldset>
+          <Field name="username" component={renderField} type="text"
+          label="Username"   />
 
-      <fieldset>
-                <label htmlFor="password">Password</label>
-                <Field name="password" className="form-control" component="input"/>
+          <Field name="password" component={renderField} type="password"
+          label="Password"  />
 
+          <Field name="passwordConfirm" component={renderField} type="password"
+          label="Confirm Password" />
 
-      </fieldset>
-
-      <fieldset>
-                <label htmlFor="passwordConfirm">Confim Password</label>
-                <Field name="passwordConfirm" className="form-control" component="input" type="password"/>
-      </fieldset>
         {this.renderAlert()}
         <button action="submit" className="btn btn-primary">Sign Up!</button>
       </form>
@@ -69,8 +60,20 @@ class Signup extends Component {
 function validate(formProps){
   const errors = {};
 
+  if(!formProps.username) {
+    errors.username = 'Please enter username';
+  }
+
+  if(!formProps.password) {
+    errors.password = 'Please enter password';
+  }
+
+  if(!formProps.passwordConfirm) {
+    errors.passwordConfirm = 'Please enter confirm password';
+  }
+
   if(formProps.password !== formProps.passwordConfirm) {
-    errors.password = 'Password must match';
+    errors.password = 'Passwords must match';
   }
 
   return errors;
