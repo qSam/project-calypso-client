@@ -2,11 +2,14 @@ import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import * as actions from '../../actions';
 import {connect} from 'react-redux';
+import '../../App.css';
+
 
 class Signin extends Component {
 
   handleFormSubmit(values) {
     //Call Signin Action Creator
+    console.log(values);
     this.props.signinUser(values);
 
   }
@@ -24,18 +27,23 @@ class Signin extends Component {
   render() {
     const {handleSubmit} = this.props;
 
+    const renderField = ({ input, label, type, meta: { touched, error } }) => (
+      <fieldset>
+      <label>{label}</label>
+      <input {...input} placeholder={label} type={type} className="form-control"/>
+      {touched && (error && <span className="Error">{error}</span>)}
+      </fieldset>
+    );
+
     return (
       <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
 
-      <fieldset className="form-group">
-        <label htmlFor="username">User Name</label>
-        <Field name="username" className="form-control" component="input" type="text" />
-      </fieldset>
+        <Field name="username" component={renderField} type="text"
+        label="Username"/>
 
-      <fieldset className="form-group">
-        <label>Password</label>
-        <Field name="password" className="form-control" component="input" type="password" />
-      </fieldset>
+        <Field name="password" component={renderField} type="password"
+        label="Password" />
+
       {this.renderAlert()}
       <button action="submit" className="btn btn-primary">Sign In!</button>
     </form>
@@ -45,6 +53,14 @@ class Signin extends Component {
 
 function validate(formProps){
   const errors = {};
+
+  if(!formProps.username) {
+    errors.username = 'Please enter username';
+  }
+
+  if(!formProps.password) {
+    errors.password = 'Please enter password';
+  }
 
   return errors;
 }
