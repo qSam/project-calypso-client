@@ -11,7 +11,7 @@ import {
 } from './types';
 
 
-const ROOT_URL = 'http://localhost:3080';
+const ROOT_URL = 'https://shrouded-mesa-18098.herokuapp.com';
 
 export function signupUser({username, password}){
 
