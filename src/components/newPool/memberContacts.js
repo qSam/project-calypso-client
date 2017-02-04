@@ -8,24 +8,19 @@ import {Field, reduxForm} from 'redux-form';
 
 class MemberContacts extends Component {
 
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleFormSubmit(event){
+  handleFormSubmit(values){
     let contactsObject = [];
-    _.times(this.props.totalMembers, (i) => {
-       let keyString="";
-       keyString="input_".concat(i);
-       contactsObject.push({"Email":event.target[keyString].value});
-    })
+    for (let emailValue of Object.values(values)) {
+      contactsObject.push({"Email":emailValue});
+    };
     this.props.addPoolContacts(contactsObject);
     browserHistory.push('/reviewnewpool');
     event.preventDefault();
   }
 
   renderInputs(){
+
+    const required = value => value ? undefined : 'Required';
 
     const renderField = ({ input, label, type, meta: { touched, error } }) => (
       <fieldset>
@@ -40,10 +35,12 @@ class MemberContacts extends Component {
         { _.times(this.props.totalMembers, (i) => {
            let keyString="";
            keyString="input_".concat(i);
-           return (
+           return(
+             <div key={keyString} >
              <Field name={keyString} component={renderField} type="text"
-             placeholder="Email" />
-
+             placeholder="Email"
+             validate={required} />
+             </div>
         );
       })}
         </div>
