@@ -29,7 +29,6 @@ class Signup extends Component {
 
     const renderField = ({ input, label, type, meta: { touched, error } }) => (
       <fieldset>
-      <label>{label}</label>
       <input {...input} placeholder={label} type={type} className="form-control"/>
       {touched && (error && <span className="Error">{error}</span>)}
       </fieldset>
@@ -37,10 +36,10 @@ class Signup extends Component {
 
 
     return(
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))} className="panel panel-default form-border">
 
           <Field name="username" component={renderField} type="text"
-          label="Username"   />
+          label="Username"  />
 
           <Field name="password" component={renderField} type="password"
           label="Password"  />

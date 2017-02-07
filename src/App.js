@@ -5,7 +5,7 @@ import Header from './components/header';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App well">
         <Header />
         <div className="App-header">
           <h3>Welcome to Project Calypso</h3>

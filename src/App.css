@@ -18,6 +18,15 @@
   font-size: large;
 }
 
+.form-border {
+  border-style: solid;
+  border-width: 2px;
+  border-color: #898988;
+  border-radius:5px;
+  width:300px;
+  margin: auto;
+}
+
 .Error {
   color:red;
 }

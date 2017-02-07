@@ -26,7 +26,7 @@ ReactDOM.render(
   <Provider store={store}>
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={Home} />
+      <IndexRoute component={Signup} />
       <Route path='home' component={Home} />
       <Route path='signup' component={Signup} />
       <Route path='signin' component={Signin} />
