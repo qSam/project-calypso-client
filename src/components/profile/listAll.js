@@ -14,10 +14,11 @@ class ListAll extends Component {
 
   renderUserPools(){
     return(
-      <div>
+      <div className="container">
+      <div className="row">
         {this.props.userPools.map( (pool) => {
           return(
-            <div key={pool._id} className="panel panel-default">
+            <div key={pool._id} className="col-sm-4 panel panel-default">
               Policy Name: {pool.policyNumber}<br />
               Total Amount: {pool.totalAmount}<br />
               Total Length: {pool.policyLength}<br />
@@ -25,6 +26,7 @@ class ListAll extends Component {
           );
         }
         )}
+      </div>
       </div>
     );
   }
@@ -35,7 +37,6 @@ class ListAll extends Component {
       if(this.props.userPools.length > 0) {
         return (
         <div>
-          Your current saving pools are:
           {this.renderUserPools()}
         </div>
       );

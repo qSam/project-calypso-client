@@ -25,7 +25,7 @@ class MemberContacts extends Component {
     const renderField = ({ input, label, type, meta: { touched, error } }) => (
       <fieldset>
       <label>{label}</label>
-      <input {...input} placeholder={label} type={type} className="form-control"/>
+      <input {...input} placeholder="Email" type={type} className="form-control"/>
       {touched && (error && <span className="Error">{error}</span>)}
       </fieldset>
     );
