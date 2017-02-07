@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import * as actions from '../../actions';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 import '../../App.css';
 
 
@@ -49,6 +50,8 @@ class Signup extends Component {
 
         {this.renderAlert()}
         <button action="submit" className="btn btn-primary">Sign Up!</button>
+        <br />
+        <span> <Link to="/signin">Already have an account</Link></span>
       </form>
 
     );

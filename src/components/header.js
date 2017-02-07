@@ -6,9 +6,6 @@ export class Header extends Component {
 
   renderLinks(){
     return [
-      <li className="nav-item" key={4} >
-        <Link className="nav-link" to="/home">Home</Link>
-      </li>,
       <li className="nav-item" key={2} >
         <Link className="nav-link" to="/signin">Sign In</Link>
       </li>,
@@ -24,7 +21,7 @@ export class Header extends Component {
   render(){
     return (
       <nav className="navbar navbar-inverse bg-primary">
-        <ul className="nav navbar-nav">
+        <ul className="nav navbar-nav pull-right">
           {this.renderLinks()}
         </ul>
       </nav>
