@@ -17,6 +17,7 @@ class ListAll extends Component {
       <div className="container">
       <div className="row">
         {this.props.userPools.map( (pool) => {
+          console.log("Pool is: ", pool._id);
           return(
             <div key={pool._id} className="col-sm-4 panel panel-default">
               Policy Name: {pool.policyNumber}<br />

@@ -17,6 +17,7 @@ import NumberOfMembers from './components/newPool/numberOfMembers';
 import MemberContacts from './components/newPool/memberContacts';
 import SavingPool from './components/newPool/savingPool';
 import ReviewNewPool from './components/newPool/reviewNewPool';
+import ListOne from './components/profile/listOne';
 
 //Create Redux Store
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
@@ -35,6 +36,7 @@ ReactDOM.render(
       <Route path='membercontacts' component={MemberContacts} />
       <Route path='savingpool' component={SavingPool} />
       <Route path='reviewnewpool' component={ReviewNewPool} />
+      <Route path='listone' component={ListOne} />
     </Route>
   </Router>
   </Provider>,

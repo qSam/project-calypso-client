@@ -6,6 +6,7 @@ import {
   ADD_POOL_CONTACTS,
   ADD_POOL_DETAILS,
   FETCH_USER_POOLS,
+  FETCH_SINGLE_POOL,
   SIGNIN_USER,
   SIGNOUT_USER
 } from './types';
@@ -133,4 +134,25 @@ export function getAllUserPools(ID) {
         console.log("Error: ", response);
       })
   }
+}
+
+export function getSinglePool(poolObject) {
+
+  const ID = poolObject.username;
+
+  return function(dispatch) {
+    axios.post(`${ROOT_URL}/fetchOnePolicy/${ID}`,{
+      "policyID":poolObject.policyID
+    })
+    .then(response => {
+      dispatch({
+        type: FETCH_SINGLE_POOL,
+        payload: response.data[0]
+      });
+    })
+    .catch(response => {
+      console.log("Error: ", response);
+    })
+  }
+
 }
