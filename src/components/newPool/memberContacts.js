@@ -5,6 +5,13 @@ import {browserHistory} from 'react-router';
 import _ from 'lodash';
 import {Field, reduxForm} from 'redux-form';
 
+const renderField = ({ input, label, type, meta: { touched, error } }) => (
+  <fieldset>
+  <label>{label}</label>
+  <input {...input} placeholder="Email" type={type} className="form-control"/>
+  {touched && (error && <span className="Error">{error}</span>)}
+  </fieldset>
+);
 
 class MemberContacts extends Component {
 
@@ -22,13 +29,6 @@ class MemberContacts extends Component {
 
     const required = value => value ? undefined : 'Required';
 
-    const renderField = ({ input, label, type, meta: { touched, error } }) => (
-      <fieldset>
-      <label>{label}</label>
-      <input {...input} placeholder="Email" type={type} className="form-control"/>
-      {touched && (error && <span className="Error">{error}</span>)}
-      </fieldset>
-    );
 
       return(
         <div>
