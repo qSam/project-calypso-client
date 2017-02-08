@@ -5,6 +5,12 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import '../../App.css';
 
+const renderField = ({ input, label, type, meta: { touched, error } }) => (
+  <fieldset>
+  <input {...input} placeholder={label} type={type} className="form-control"/>
+  {touched && (error && <span className="Error">{error}</span>)}
+  </fieldset>
+);
 
 
 class Signup extends Component {
@@ -26,14 +32,6 @@ class Signup extends Component {
 
   render() {
     const {handleSubmit} = this.props;
-
-
-    const renderField = ({ input, label, type, meta: { touched, error } }) => (
-      <fieldset>
-      <input {...input} placeholder={label} type={type} className="form-control"/>
-      {touched && (error && <span className="Error">{error}</span>)}
-      </fieldset>
-    );
 
 
     return(
