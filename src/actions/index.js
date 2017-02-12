@@ -13,8 +13,8 @@ import {
 } from './types';
 
 
-//const ROOT_URL = 'https://shrouded-mesa-18098.herokuapp.com';
-const ROOT_URL = 'http://localhost:3080';
+const ROOT_URL = 'https://shrouded-mesa-18098.herokuapp.com';
+//const ROOT_URL = 'http://localhost:3080';
 
 export function signupUser({username, password}){
 
@@ -147,6 +147,7 @@ export function getSinglePool(poolObject) {
       "policyID":poolObject.policyID
     })
     .then(response => {
+      console.log("Response is ", response.data[0]);
       dispatch({
         type: FETCH_SINGLE_POOL,
         payload: response.data[0]

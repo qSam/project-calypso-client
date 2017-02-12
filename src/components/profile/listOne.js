@@ -21,19 +21,28 @@ class ListOne extends Component {
   render(){
 
 
-    if(this.props.userSignedIn) {
+    if(this.props.userSignedIn && this.props.currentPool.policyMembers) {
+
+      let memberObject = this.props.currentPool.policyMembers;
       return(
         <div>
           Policy Number: {this.props.currentPool.policyNumber}<br />
           Total Amount: {this.props.currentPool.totalAmount}<br />
           Policy Length: {this.props.currentPool.policyLength}<br />
+          {memberObject.length > 0 && Object.keys(memberObject).map((key) => {
+              return (
+                <div key={key}>Member Contact is: {memberObject[key]} </div>
+              );
+            })}
+          {memberObject.length === 0 && <div>No members have been added to this policy</div>}
+
           <Link className="btn btn-primary" to="/home">Back</Link>
         </div>
       );
     } else {
         return(
           <div>
-            Please Sign In First
+            Please Sign In and Select a Policy to review
           </div>
         );
       }
