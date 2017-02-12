@@ -4,6 +4,11 @@ import * as actions from '../../actions';
 
 class ListAll extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
 
   //First Time Render
   componentWillMount() {
@@ -12,15 +17,20 @@ class ListAll extends Component {
   }
   }
 
+  handleClick(poolId) {
+    this.props.setCurrentPool(poolId);
+  }
+
   renderUserPools(){
     return(
       <div className="container">
       <div className="row">
         {this.props.userPools.map( (pool) => {
-          console.log("Pool is: ", pool._id);
           return(
             <div key={pool._id} className="col-sm-4 panel panel-default">
-              Policy Name: {pool.policyNumber}<br />
+              <a href="#" onClick={ () => {this.handleClick(pool._id)} }  >
+                  Policy Name: {pool.policyNumber}<br />
+              </a>
               Total Amount: {pool.totalAmount}<br />
               Total Length: {pool.policyLength}<br />
             </div>

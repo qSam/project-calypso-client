@@ -1,28 +1,33 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../../actions';
+import {Link} from 'react-router';
 
 
 class ListOne extends Component {
 
+
+
   componentWillMount(){
 
     let poolObject = {
-      "username":"cr1",
-      "policyID":"58964972689c440012d623e7"
+      "username":this.props.userID,
+      "policyID":this.props.currentPoolID
     };
-
     this.props.getSinglePool(poolObject);
   }
 
+
   render(){
+
 
     if(this.props.userSignedIn) {
       return(
         <div>
           Policy Number: {this.props.currentPool.policyNumber}<br />
           Total Amount: {this.props.currentPool.totalAmount}<br />
-          Policy Length: {this.props.currentPool.policyLength}
+          Policy Length: {this.props.currentPool.policyLength}<br />
+          <Link className="btn btn-primary" to="/home">Back</Link>
         </div>
       );
     } else {
@@ -38,6 +43,8 @@ class ListOne extends Component {
 function mapStateToProps(state) {
   return {
     userSignedIn: state.user.userSignedIn,
+    userID: state.user.userID,
+    currentPoolID: state.user.currentPoolID,
     currentPool: state.user.currentPool
   };
 }

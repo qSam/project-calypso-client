@@ -8,7 +8,8 @@ import {
   FETCH_USER_POOLS,
   FETCH_SINGLE_POOL,
   SIGNIN_USER,
-  SIGNOUT_USER
+  SIGNOUT_USER,
+  SET_CURRENT_POOL
 } from './types';
 
 
@@ -149,10 +150,23 @@ export function getSinglePool(poolObject) {
         type: FETCH_SINGLE_POOL,
         payload: response.data[0]
       });
+
     })
     .catch(response => {
       console.log("Error: ", response);
     })
   }
 
+}
+
+export function setCurrentPool(value) {
+  return function(dispatch) {
+    dispatch({
+      type: SET_CURRENT_POOL,
+      payload:value
+    });
+
+    //Reroute to list one component
+    browserHistory.push('/listone');
+  }
 }
