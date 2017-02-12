@@ -13,8 +13,8 @@ import {
 } from './types';
 
 
-const ROOT_URL = 'https://shrouded-mesa-18098.herokuapp.com';
-//const ROOT_URL = 'https://localhost:3080';
+//const ROOT_URL = 'https://shrouded-mesa-18098.herokuapp.com';
+const ROOT_URL = 'http://localhost:3080';
 
 export function signupUser({username, password}){
 
@@ -80,7 +80,8 @@ export function submitNewPool(values) {
     axios.post(`${ROOT_URL}/createPolicy/${ID}`,{
         "policyName": values.policyName,
         "totalAmount":  values.totalAmount,
-        "policyLength": values.policyLength
+        "policyLength": values.policyLength,
+        "policyMembers": values.policyMembers
     })
     .then (response => {
       console.log("Policy successfully created");

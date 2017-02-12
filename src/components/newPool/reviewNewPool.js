@@ -15,12 +15,19 @@ class ReviewNewPool extends Component {
     const submitTotalAmount = this.props.poolDetails.totalAmount;
     const submitPolicyLength = this.props.poolDetails.policyLength;
 
+    var submitPolicyMembers = [];
+    this.props.memberContacts.forEach( (contact) => {
+      submitPolicyMembers.push(contact.Email);
+    });
+
+
     let newPoolObject = {
       "username":  this.props.userID,
       "totalMembers": submitTotalMembers,
       "policyName": submitPolicyName,
       "totalAmount": submitTotalAmount,
-      "policyLength": submitPolicyLength
+      "policyLength": submitPolicyLength,
+      "policyMembers": submitPolicyMembers
     };
 
     this.props.submitNewPool(newPoolObject);
