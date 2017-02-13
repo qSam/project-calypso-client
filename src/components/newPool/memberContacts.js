@@ -16,6 +16,7 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 class MemberContacts extends Component {
 
   handleFormSubmit(values){
+    console.log("I am here");
     let contactsObject = [];
     for (let emailValue of Object.values(values)) {
       contactsObject.push({"Email":emailValue});
