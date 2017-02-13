@@ -16,11 +16,13 @@ const renderField = ({ input, label, type, meta: { touched, error } }) => (
 class MemberContacts extends Component {
 
   handleFormSubmit(values){
-    console.log("I am here");
+
     let contactsObject = [];
-    for (let emailValue of Object.values(values)) {
-      contactsObject.push({"Email":emailValue});
-    };
+
+    Object.keys(values).forEach( (key) => {
+      contactsObject.push({"Email":values[key]});
+    });
+
     this.props.addPoolContacts(contactsObject);
     browserHistory.push('/reviewnewpool');
     event.preventDefault();
