@@ -41,15 +41,15 @@ class ListOne extends Component {
       let memberObject = this.props.currentPool.policyMembers;
       return(
         <div>
-          Policy Number: {this.props.currentPool.policyNumber}<br />
+          Pool Name: {this.props.currentPool.policyNumber}<br />
           Total Amount: {this.props.currentPool.totalAmount}<br />
-          Policy Length: {this.props.currentPool.policyLength}<br />
+          Policy Length: {this.props.currentPool.policyLength} month(s)<br />
           {memberObject.length > 0 && Object.keys(memberObject).map((key) => {
               return (
                 <div key={key}>Member Contact is: {memberObject[key]} </div>
               );
             })}
-          {memberObject.length === 0 && <div>No members have been added to this policy</div>}
+          {memberObject.length === 0 && <div>No members have been added to this pool</div>}
 
           <div className="row">
             <div className="col-sm-6">

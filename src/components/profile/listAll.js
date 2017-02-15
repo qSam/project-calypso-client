@@ -29,10 +29,10 @@ class ListAll extends Component {
           return(
             <div key={pool._id} className="col-sm-4 panel panel-default">
               <a href="#" onClick={ () => {this.handleClick(pool._id)} }  >
-                  Policy Name: {pool.policyNumber}<br />
+                  Pool Name: {pool.policyNumber}<br />
               </a>
               Total Amount: {pool.totalAmount}<br />
-              Total Length: {pool.policyLength}<br />
+              Total Length: {pool.policyLength} month(s)<br />
             </div>
           );
         }
