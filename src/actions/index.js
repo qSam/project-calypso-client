@@ -147,7 +147,6 @@ export function getSinglePool(poolObject) {
       "policyID":poolObject.policyID
     })
     .then(response => {
-      console.log("Response is ", response.data[0]);
       dispatch({
         type: FETCH_SINGLE_POOL,
         payload: response.data[0]
@@ -159,6 +158,22 @@ export function getSinglePool(poolObject) {
     })
   }
 
+}
+
+export function deletePool(deleteObject) {
+  const ID = deleteObject.username;
+
+  return function(dispatch) {
+    axios.post(`${ROOT_URL}/deletePolicy/${ID}`,{
+      "policyID": deleteObject.policyID
+    })
+    .then( response => {
+      browserHistory.push('/home');
+    })
+    .catch(response => {
+      console.log("Error: ",response);
+    })
+  }
 }
 
 export function setCurrentPool(value) {

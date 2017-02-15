@@ -7,6 +7,12 @@ import {Link} from 'react-router';
 class ListOne extends Component {
 
 
+  constructor(props) {
+    super(props);
+
+    this.handleDeleteClick = this.handleDeleteClick.bind(this);
+  }
+
 
   componentWillMount(){
 
@@ -15,6 +21,15 @@ class ListOne extends Component {
       "policyID":this.props.currentPoolID
     };
     this.props.getSinglePool(poolObject);
+  }
+
+  handleDeleteClick(){
+    console.log("I am inside delete");
+    let deleteObject = {
+      "username":this.props.userID,
+      "policyID":this.props.currentPoolID
+    };
+    this.props.deletePool(deleteObject);
   }
 
 
@@ -41,7 +56,7 @@ class ListOne extends Component {
               <Link className="btn btn-primary" to="/home">Back</Link>
             </div>
             <div className="col-sm-6">
-              <button type="button" className="btn btn-danger">Delete Policy</button>
+              <button type="button" className="btn btn-danger" onClick={this.handleDeleteClick}>Delete Policy</button>
             </div>
           </div>
         </div>
