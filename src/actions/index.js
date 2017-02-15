@@ -13,8 +13,8 @@ import {
 } from './types';
 
 
-//const ROOT_URL = 'https://shrouded-mesa-18098.herokuapp.com';
-const ROOT_URL = 'http://localhost:3080';
+const ROOT_URL = 'https://shrouded-mesa-18098.herokuapp.com';
+//const ROOT_URL = 'http://localhost:3080';
 
 export function signupUser({username, password}){
 
