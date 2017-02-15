@@ -36,7 +36,14 @@ class ListOne extends Component {
             })}
           {memberObject.length === 0 && <div>No members have been added to this policy</div>}
 
-          <Link className="btn btn-primary" to="/home">Back</Link>
+          <div className="row">
+            <div className="col-sm-6">
+              <Link className="btn btn-primary" to="/home">Back</Link>
+            </div>
+            <div className="col-sm-6">
+              <button type="button" className="btn btn-danger">Delete Policy</button>
+            </div>
+          </div>
         </div>
       );
     } else {
