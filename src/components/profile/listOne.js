@@ -26,6 +26,8 @@ class ListOne extends Component {
 
   handleEmailClick(){
     console.log("Inside email click");
+    this.props.sendEmail();
+
   }
 
   handleDeleteClick(){

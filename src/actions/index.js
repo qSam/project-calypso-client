@@ -176,6 +176,30 @@ export function deletePool(deleteObject) {
   }
 }
 
+export function sendEmail() {
+  return function(dispatch) {
+    const config = {
+      headers:
+      {
+        'Content-Type': 'multipart/form-data',
+         'Access-Control-Allow-Origin':'*'
+      }
+    };
+    axios.post('https://api:key-aeef4a8a2f3aebef7a61dde586fae5e6@api.mailgun.net/v3/sandbox5077d4bfd5344f9b9efea5e3352d6837.mailgun.org/messages',{
+      "from":"go.jets.laghari@gmail.com",
+      "to":"go.jets.laghari@gmail.com",
+      "subject":"Email for Project Calypso",
+      "text":"Hey there friend"
+    }, config)
+    .then( response => {
+      console.log("Email successful ", response );
+    })
+    .catch( response => {
+      console.log("Error: ", response);
+    })
+  }
+}
+
 export function setCurrentPool(value) {
   return function(dispatch) {
     dispatch({
