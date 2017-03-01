@@ -13,8 +13,8 @@ import {
 } from './types';
 
 
-const ROOT_URL = 'https://shrouded-mesa-18098.herokuapp.com';
-//const ROOT_URL = 'http://localhost:3080';
+//const ROOT_URL = 'https://shrouded-mesa-18098.herokuapp.com';
+const ROOT_URL = 'http://localhost:3080';
 
 export function signupUser({username, password}){
 
@@ -178,18 +178,8 @@ export function deletePool(deleteObject) {
 
 export function sendEmail() {
   return function(dispatch) {
-    const config = {
-      headers:
-      {
-        'Content-Type': 'multipart/form-data'
-      }
-    };
-    axios.post('https://api:key-aeef4a8a2f3aebef7a61dde586fae5e6@api.mailgun.net/v3/sandbox5077d4bfd5344f9b9efea5e3352d6837.mailgun.org/messages',{
-      "from":"go.jets.laghari@gmail.com",
-      "to":"go.jets.laghari@gmail.com",
-      "subject":"Email for Project Calypso",
-      "text":"Hey there friend"
-    }, config)
+
+    axios.get(`${ROOT_URL}/sendEmail`)
     .then( response => {
       console.log("Email successful ", response);
     })
