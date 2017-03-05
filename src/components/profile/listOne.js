@@ -11,6 +11,7 @@ class ListOne extends Component {
     super(props);
 
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
+    this.handleEmailClick = this.handleEmailClick.bind(this);
   }
 
 
@@ -23,8 +24,25 @@ class ListOne extends Component {
     this.props.getSinglePool(poolObject);
   }
 
+  handleEmailClick(){
+    let sendEmailObject = this.props.currentPool.policyMembers;
+    let email = {
+      toEmail : []
+    };
+
+    Object.keys(sendEmailObject).map((key) => {
+               console.log("Send Email is : ", sendEmailObject[key]);
+               email.toEmail.push(sendEmailObject[key]);
+               return "Done";
+    });
+
+
+    this.props.sendEmail(email);
+
+  }
+
   handleDeleteClick(){
-    console.log("I am inside delete");
+
     let deleteObject = {
       "username":this.props.userID,
       "policyID":this.props.currentPoolID
@@ -52,10 +70,13 @@ class ListOne extends Component {
           {memberObject.length === 0 && <div>No members have been added to this pool</div>}
 
           <div className="row">
-            <div className="col-sm-6">
+            <div className="col-sm-4">
               <Link className="btn btn-primary" to="/home">Back</Link>
             </div>
-            <div className="col-sm-6">
+            <div className="col-sm-4">
+              <button type="button" className="btn btn-success" onClick={this.handleEmailClick}>Send Email</button>
+            </div>
+            <div className="col-sm-4">
               <button type="button" className="btn btn-danger" onClick={this.handleDeleteClick}>Delete Policy</button>
             </div>
           </div>

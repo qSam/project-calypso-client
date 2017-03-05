@@ -176,6 +176,21 @@ export function deletePool(deleteObject) {
   }
 }
 
+export function sendEmail(email) {
+  return function(dispatch) {
+
+    axios.post(`${ROOT_URL}/sendEmail`, {
+        "toEmail": email.toEmail
+    })
+    .then( response => {
+      console.log("Email successful ", response);
+    })
+    .catch( response => {
+      console.log("Error: ", response);
+    })
+  }
+}
+
 export function setCurrentPool(value) {
   return function(dispatch) {
     dispatch({
