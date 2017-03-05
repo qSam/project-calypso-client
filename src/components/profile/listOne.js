@@ -25,8 +25,21 @@ class ListOne extends Component {
   }
 
   handleEmailClick(){
-    console.log("Inside email click");
-    this.props.sendEmail();
+    let sendEmailObject = this.props.currentPool.policyMembers;
+    let email = {
+      toEmail : []
+    };
+
+    Object.keys(sendEmailObject).map((key) => {
+               console.log("Send Email is : ", sendEmailObject[key]);
+               email.toEmail.push(sendEmailObject[key]);
+               return "Done";
+    });
+
+
+    console.log("Email Object is ", email);
+
+    this.props.sendEmail(email);
 
   }
 

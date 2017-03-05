@@ -176,10 +176,12 @@ export function deletePool(deleteObject) {
   }
 }
 
-export function sendEmail() {
+export function sendEmail(email) {
   return function(dispatch) {
 
-    axios.get(`${ROOT_URL}/sendEmail`)
+    axios.post(`${ROOT_URL}/sendEmail`, {
+        "toEmail": email.toEmail
+    })
     .then( response => {
       console.log("Email successful ", response);
     })
