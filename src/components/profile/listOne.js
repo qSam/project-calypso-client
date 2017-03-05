@@ -37,8 +37,6 @@ class ListOne extends Component {
     });
 
 
-    console.log("Email Object is ", email);
-
     this.props.sendEmail(email);
 
   }
